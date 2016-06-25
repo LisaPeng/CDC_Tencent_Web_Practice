@@ -1,35 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <title>腾讯CDC</title>
     <style>
-        body{
+
+        #header{
+            z-index: 100;
+            position:fixed;
+            box-sizing: border-box;
+            left:0;
+            top:0;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 19px;
+            padding-bottom: 19px;
+            height: 74px;
+            width: 100%;
+        }
+        #logo{
+
+            overflow: hidden;
+            display: inline-block;
+        }
+        #logo img{
+            margin-top: 5px;
+            width:100%;
+        }
+        #logo a{
+            display: inline-block;
+            overflow: hidden;
+            width: 117px;
+            line-height: 33px;
+            background-position: center center;
+            background-size: 117px 25px;
+        }
+        #header #menu{
+            vertical-align: top;
+            padding-left: 128px;
+            display: inline-block;
+        }
+        #header #menu li{
+            display: inline-block;
+            height: 40px;
+            position: relative;
+            margin-right: 32px;
+            font-size: 16px;
+        }
+        #menu ul{
+
+            padding-left: 0;
             margin: 0;
         }
-        #header{
-            position:fixed;
-            left:0;
-            top:0;
-            height: 90px;
-            background-color: #ffffff;
+        #menu a{
+            display: inline-block;
+            padding-left: 12px;
+            padding-right: 12px;
+            font-size: 16px;
+            color: #f38089;
+            line-height: 33px;
+            border-bottom: 3px solid transparent;
+            text-decoration: none;
         }
+        #menu a:hover, #menu a.active{
+            color: #fff;
+            display: inline-block;
+            padding-left: 12px;
+            padding-right: 12px;
+            font-size: 16px;
+            line-height: 33px;
+            border-bottom: 3px solid white;
+            text-decoration: none;
+        }
+        #icon{
+            display: inline-block;
+            float: right;
+        }
+        #icon ul{
+            display: inline-block;
+        }
+        #icon img{
+            height: 23px;
+        }
+        #icon a{
+            line-height: 36px;
+            text-align: center;
+            text-decoration: none;
+        }
+        #icon #wechat{
+            background-position: 0 0;
+        }
+        #icon #RSS{
+            background-position: -27px 0;
+        }
+        #icon #research{
+            background-position: -50px 0;
+        }
+
 
         #banner{
-            position:relative;
+            position: relative;
+            z-index: 0;
             left:0;
             top:0;
-            width: 200%;
-
+            width:100%;
+            overflow: hidden;
         }
-        #banner .picture{
+        #box{
+            width: 200%;
+            height: 540px;;
+            position: relative;
+            transition:1s;
+        }
+        #box .picture{
             position: relative;
             width: 50%;
             overflow: hidden;
             display: inline-block;
         }
-        #banner img{
+        #box img{
             position: relative;
             left: 50%;
             -webkit-transform: translate(-50%, 0);
@@ -38,19 +128,234 @@
             -o-transform: translate(-50%, 0);
             transform: translate(-50%, 0);
         }
-
-        #tools{
+        #button{
+            z-index: 1;
+            position:absolute;
+            margin: 0;
+            left:50%;
+            top: 50%;
+        }
+        #tab{
+            position: absolute;
+            text-align: center;
+            left:50%;
+            top: 50%;
 
         }
+        #tab .tab{
+            z-index: 1;
+            background-color: #fff;
+            width: 68px;
+            height: 2px;
+            margin: 0 5px;
+        }
+
+
+
+        #tools{
+            background: #f4f4f4;
+            border-bottom: 2px solid #fff;
+            position: relative;
+        }
+        #tools ul{
+            margin: 0;
+            padding: 0;
+        }
+        #tools li{
+            border-right: 1px solid #fff;
+            text-align: right;
+            background-position: right -138px;
+            float: left;
+            width: 50%;
+            height: 138px;
+            padding-top: 16px;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+        #tools a{
+            margin-right: 130px;
+            padding-left: 120px;
+            display: inline-block;
+            text-align: left;
+            position: relative;
+            padding-top: 18px;
+            text-decoration: none;
+        }
+        #tools em{
+            display: block;
+            font-size: 30px;
+            color: #4e4e4e;
+            font-style: normal;
+        }
+        #tools p{
+            color: grey;
+        }
+
 
         #container{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: block;
+            height: auto;
+        }
+        #fliter{
+            position: relative;
+            height: 48px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-top: 7px;
+            padding-bottom: 6px;
+            padding-left: 40px;
+            padding-right: 40px;
+            display: block;
+        }
+        #fliter-line{        /*显示不出来*/
+            height: 1px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            top: 24px;
+            background-color: #d2d2d2;
+            display: block;
+        }
+        #fliter-menu{        /*block之间有间隙*/
+            position: absolute;
+            left: 50%;
+            margin-left: -240px;
+            width: 480px;
+            height: 48px;
+            background-color: #f9f9f9;
+            z-index: 10;
+            display: block;
+            padding-left: 15px;
+        }
+        #fliter ul{
+            padding:0;
+            padding-top:auto;
+            padding-bottom:auto;
+            margin:0;
 
+        }
+        #fliter li{
+            position: relative;
+            display: inline-block;
+            margin-top: 9px;
+            margin-right: 24px;
+            margin-bottom: 9px;
+            margin-left: 24px;
+            font-size: 20px;
+            width: 100px;
+        }
+        #fliter a{
+            font-size: 20px;
+            text-align: center;
+            padding-right: 20px;
+            display: inline-block;
+            line-height: 30px;
+            color: grey;
+            text-decoration: none;
+            float: left;
+        }
+        #fliter a:hover{
+            color: #4f4f4f;
+        }
+        .article-item{
+            position: relative;
+            float: left;
+            width: 578px;
+            margin-left: 40px;
+            margin-bottom: 40px;
+            background-color: #fff;
+            transition: box-shadow .3s ease-in,transform .2s ease-in;
+            border: 1px solid #e8e8e8;
+            display: block;
+
+        }
+        .item-banner{
+            height: 205px;
+            overflow: hidden;
+            background-size: 100% auto;
+            display: block;
+        }
+        .item-banner a{
+            text-decoration: none;
+        }
+        .item-banner img{
+            width: 578px;
+            height: 205px;
+            border: 0;
+        }
+        .item-title{
+            padding-top: 12px;
+            padding-right: 20px;
+            padding-left: 20px;
+            display: block;
+        }
+        .item-title h3{
+            width: 100%;
+            overflow: hidden;
+            font-size: 20px;
+            font-style: normal;
+            margin:0;
+        }
+        .item-title a{
+            color: #4f4f4f;
+            text-decoration: none;
+        }
+        .item-foot{
+            padding-right: 20px;
+            padding-bottom: 12px;
+            padding-left: 20px;
+            line-height: 24px;
+            font-size: 16px;
+            display: block;
+            mirgin: 0;
+        }
+        .item-foot .author{
+
+            display: block;
+        }
+        .item-foot .count{
+            float: right;
+            display: block;
+        }
+        .item-foot ul{
+            margin: 0;
+            padding: 0;
+        }
+        .item-foot li{
+            float: left;
+            margin-left: 15px;
+            color: #d2d2d2;
+            list-style:none;
+        }
+        .item-foot .view{
+            padding-left: 25px;
+            background-position-y: 5px;
+        }
+        .item-foot .like{
+            padding-left: 20px;
+            background-position-y: -13px;
+        }
+        .item-foot .comments{
+            padding-left: 20px;
+            background-position-y: -35px;
         }
 
         #footer{
 
         }
 
+        body{
+            font-family: PingFangSC-Light,'helvetica neue','hiragino sans gb',tahoma,
+            'microsoft yahei ui','microsoft yahei',simsun,sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #4f4f4f;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
 
     </style>
 </head>
@@ -69,11 +374,21 @@
 
     <div id="menu">
         <ul type="none">
-            <li><a href="">首页</a></li>
+            <li><a href="" class="active">首页</a></li>
             <li><a href="">工具</a></li>
             <li><a href="">我们</a></li>
             <li><a href="">招聘</a></li>
         </ul>
+    </div>
+
+    <div id="icon">
+        <ul type="none">
+            <li id="wechat"><a href=""><i class="icon"></i></a></li>
+            <li id="RSS"><a href=""><i class="icon"></i></a></li>
+            <li id="research"><a href=""><i class="icon"></i></a></li>
+        </ul>
+        <img src="http://i4.piimg.com/567571/bfb79c91f2e8d44a.png" alt="CDC logo">
+
     </div>
 
 </div>
@@ -81,7 +396,7 @@
 
 <!--Banner Carousel figure-->
 <div id="banner">
-
+<div id="box">
     <div class="picture">
         <a href="">
             <img src="http://i2.piimg.com/567571/215fe9fc9e7cfd39.png" alt="banner1">
@@ -91,23 +406,132 @@
             <img src="http://i4.piimg.com/567571/5aec3eb70ecf2b3d.png" alt="banner2">
         </a>
     </div>
-    <div class="button">
-
-    </div>
-
+</div>
+<div id="button">
+    <a href="">
+        <img src="http://i4.piimg.com/567571/7d54f12b7cf7e566.png" alt="banner2">
+    </a>
+</div>
+<div id="tab">
+    <span class="tab"></span>
+    <span class="tab"></span>
+</div>
 </div>
 
 
 <!--tools-->
 <div id="tools">
+    <ul type="none">
 
+        <li><a href="" >
+            <img src="http://i2.piimg.com/567571/d2da9f7ecbc6bdae.png" alt="" id="question">
+            <em>腾讯问卷</em>
+            <p>免费好用的问卷调查系统</p>
+        </a></li>
+        <li><a href="">
+            <img src="http://i2.piimg.com/567571/d2da9f7ecbc6bdae.png" alt="" id="path">
+            <em>设计导航</em>
+            <p>设计做不好，因为看得少</p>
+        </a></li>
+    </ul>
+        <img src="http://i1.piimg.com/567571/d4183d530204050a.jpg" alt="tool">
 </div>
 
 
 <!--container-->
 <div id="container">
+<!--container's fliter-->
+<div id="fliter">
+    <div id="fliter-line"></div>
+    <div id="fliter-menu">
+        <ul>
+            <li><a href="" >全部作品</a></li
+            ><li><a href="" >设计领域</a></li
+            ><li><a href="" >最新发布</a></li>
+        </ul>
+    </div>
+</div>
+<!--container's article-->
+<div class="article-item">
+    <div class="item-banner">
+    <a href=""><img src="http://i1.piimg.com/567571/66621f161577b7f7.png" alt="item"></a>
+    </div>
+    <div class="item-title">
+        <h3><a href="">家门愿意为谁开？——一张图洞察O2O上门服务</a></h3>
+    </div>
+    <div class="item-foot">
 
+        <div class="count">
+            <ul >
+                <li class="view">10941</li>
+                <li class="like">8</li>
+                <li class="comments">5</li>
+            </ul>
+        </div>
+        <div class="author">作者：yithyang</div>
+    </div>
+</div>
+    <!--container's article-->
+    <div class="article-item">
+        <div class="item-banner">
+            <a href=""><img src="http://i1.piimg.com/567571/0de789aa3591f10a.jpg" alt="item"></a>
+        </div>
+        <div class="item-title">
+            <h3><a href="">在线旅游正在如何快速颠覆传统格局</a></h3>
+        </div>
+        <div class="item-foot">
 
+            <div class="count">
+                <ul >
+                    <li class="view">11271</li>
+                    <li class="like">337</li>
+                    <li class="comments">0</li>
+                </ul>
+            </div>
+            <div class="author">作者：cache</div>
+        </div>
+    </div>
+    <!--container's article-->
+    <div class="article-item">
+        <div class="item-banner">
+            <a href=""><img src="http://i1.piimg.com/567571/39ae48e92ffb21b0.jpg" alt="item"></a>
+        </div>
+        <div class="item-title">
+            <h3><a href="">CDC十周年庆典</a></h3>
+        </div>
+        <div class="item-foot">
+
+            <div class="count">
+                <ul >
+                    <li class="view">21384</li>
+                    <li class="like">509</li>
+                    <li class="comments">23</li>
+                </ul>
+            </div>
+            <div class="author">作者：jingjshi</div>
+        </div>
+    </div>
+    <!--container's article-->
+    <div class="article-item">
+        <div class="item-banner">
+            <a href=""><img src="http://i1.piimg.com/567571/6ac1b4c257ea85b2.jpg" alt="item"></a>
+        </div>
+        <div class="item-title">
+            <h3><a href="">【每周一问50】你敢问我敢答</a></h3>
+        </div>
+        <div class="item-foot">
+
+            <div class="count">
+                <ul >
+                    <li class="view">11271</li>
+                    <li class="like">337</li>
+                    <li class="comments">2</li>
+                </ul>
+            </div>
+            <div class="author">作者：cache</div>
+        </div>
+    </div>
+<div style="clear: both;"></div>
 </div>
 
 
@@ -116,6 +540,6 @@
 
 </div>
 
-
+<script src="index.js"></script>
 </body>
 </html>
