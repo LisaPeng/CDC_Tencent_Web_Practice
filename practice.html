@@ -344,7 +344,91 @@
         }
 
         #footer{
+            position: relative;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            background-color: #fff;
+            border-top: 1px solid #d6dae4;
+        }
+        #logos{
+            position: absolute;
+            border: 0;
+            vertical-align: top;
+            position: relative;
+            height: 25px;
+            overflow: hidden;
+            padding-left: 10px;
+            margin-left: 20px;
+            margin-top: 22px;
+        }
 
+        #copyright{
+            position: absolute;
+            margin-left: 30px;
+            margin-top: 1px;
+            display: inline-block;
+        }
+        #footer #h1{
+            width: 100%;
+            z-index: 2;
+            position: relative;
+            top: -27px;
+            left: 729px;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            color: grey;
+        }
+        #footer #h2{
+            width: 100%;
+            z-index: 2;
+            color: grey;
+            position: relative;
+            top: -24px;
+            left: 729px;
+            display: inline-block;
+        }
+        #footer ul{
+            padding:0;
+            display: inline-block;
+            margin-left: 100px;
+            top: -27px;
+            left: 729px;
+
+        }
+        #footer li{
+            decoration: none;
+            display: inline-block;
+
+        }
+        #footer #link1{
+            position: absolute;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            top: 65px;
+            left: 838px;
+        }
+        #footer #link2{
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            top: -70px;
+            left: 838px;
+        }
+        #footer a{
+            margin-right: 20px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 0 10px;
+            line-height: 32px;
+            color: grey;
+            transition: color .2s ease-in;
+        }
+        #footer a:hover{
+            color: grey;
+            color: #4f4f4f;
         }
 
         body{
@@ -537,6 +621,31 @@
 
 <!--footer-->
 <div id="footer">
+<div id="logos">
+    <a href=""><img src="http://i1.piimg.com/567571/01d9cbbf9100a93e.png" alt=""></a>
+    <a href=""><img src="http://i1.piimg.com/567571/7410ed3e5daf801c.png" alt=""></a>
+</div>
+    <div id="copyright">
+        <p class="copyright">Copyright © 1998 - 2016 Tencent. All Rights Reserved. Powered By Wordpress.</p>
+    </div>
+
+
+        <h4 id="h1">腾讯设计团队</h4>
+        <ul id="link1" type="none">
+            <li><a href="">ISUX</a></li>
+            <li><a href="">MXD</a></li>
+            <li><a href="">TGideas</a></li>
+            <li><a href="">AlloyTeam</a></li>
+        </ul>
+        <h4 id="h2">友情链接</h4>
+        <ul id="link2" type="none">
+            <li><a href="">ISUX</a></li>
+            <li><a href="">MXD</a></li>
+            <li><a href="">TGideas</a></li>
+            <li><a href="">AlloyTeam</a></li>
+        </ul>
+
+
 
 </div>
 
